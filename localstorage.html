@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- use to storage data in browser  -->
+  <script>
+
+
+let x = localStorage.getItem('x') //11 is a string
+x = Number(x)
+x++
+localStorage.setItem('x',x)
+
+
+let data ={name:'Rohit',email:'rohit@gmail.com'}
+//object to string
+data = JSON.stringify(data) //JSON.parse()
+localStorage.setItem('data',data)
+
+
+  </script>
+
+</body>
+
+</html>
