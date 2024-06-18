@@ -11,6 +11,7 @@ function App() {
   let [password, setPassword] = useState('');
   let [isLogin, setIsLogin] = useState((localStorage.getItem('isLogin') != undefined && localStorage.getItem('isLogin') != null && localStorage.getItem('isLogin') == 'true') ? true : false)
   let [error, setError] = useState('')
+  let [hide,setHide] = useState(true)
 
 
   //localStorage:
@@ -39,6 +40,14 @@ function App() {
     setUsername('')
     setPassword('')
   }
+
+  const showHide = () => {
+    if(hide==true){
+      setHide(false)
+    }else{
+      setHide(true)
+    }
+  }
   return (
     <div className="container-fluid pt-4">
 
@@ -66,7 +75,11 @@ function App() {
                   </div>
                   <div className='mb-3'>
                     <label className='form-label'>Password</label>
-                    <input type='password' className='form-control' placeholder='Password' value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                    <div class="input-group mb-3">
+
+                      <input type={ (hide==true)?"password":"text"} class="form-control" placeholder="Password" value={password} onChange={(e) => { setPassword(e.target.value) }}   />
+                      <span class="input-group-text" onClick={showHide}><i class={ (hide==true)?"fa-solid fa-eye-slash":"fa-solid fa-eye"}></i></span>
+                    </div>
                   </div>
                   <div className='text-danger'>{error}</div>
                   <button className='btn btn-dark'>Login</button>
